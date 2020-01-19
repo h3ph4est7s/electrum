@@ -22,11 +22,11 @@
 # SOFTWARE.
 import os
 import threading
+import hashlib
 from typing import Optional, Dict, Mapping, Sequence
 
 from . import util
 from .bitcoin import hash_encode, int_to_hex, rev_hex
-import scrypt
 from .crypto import sha256d
 from . import constants
 from .util import bfh, bh2u
@@ -81,7 +81,7 @@ def hash_header(header: dict) -> str:
 
 def hash_raw_header(header: str) -> str:
     headerBytes = bfh(header)
-    return hash_encode(scrypt.hash(headerBytes, headerBytes, 1024, 1, 1, 32))
+    return hash_encode(hashlib.scrypt(password=headerBytes, salt=headerBytes, n=1024, r=1, p=1, dklen=32))
 
 
 # key: blockhash hex at forkpoint
