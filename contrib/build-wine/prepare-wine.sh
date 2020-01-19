@@ -17,7 +17,7 @@ PYINSTALLER_REPO="https://github.com/SomberNight/pyinstaller.git"
 PYINSTALLER_COMMIT=46fc8155710631f84ebe20e32e0a6ba6df76d366
 # ^ tag 3.5, plus a custom commit that fixes cross-compilation with MinGW
 
-PYTHON_VERSION=3.6.8
+PYTHON_VERSION=3.7.6
 
 ## These settings probably don't need change
 export WINEPREFIX=/opt/wine64
@@ -100,7 +100,7 @@ info "Building PyInstaller."
     rm -fv PyInstaller/bootloader/Windows-*/run*.exe || true
     # add reproducible randomness. this ensures we build a different bootloader for each commit.
     # if we built the same one for all releases, that might also get anti-virus false positives
-    echo "const char *electrum_tag = \"tagged by Electrum@$ELECTRUM_COMMIT_HASH\";" >> ./bootloader/src/pyi_main.c
+    echo "const char *electrum_tag = \"tagged by Electrum@$ELECTRUM_COMMIT_HASH\";" >> ./bootloader/src/pyi_^in.c
     pushd bootloader
     # cross-compile to Windows using host python
     python3 ./waf all CC=i686-w64-mingw32-gcc CFLAGS="-Wno-stringop-overflow -static"
