@@ -21,7 +21,7 @@ VERSION=`git describe --tags --dirty --always`
 
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
-
+export PATH=$HOME/Library/Python/3.7/bin:$PATH
 
 which brew > /dev/null 2>&1 || fail "Please install brew from https://brew.sh/ to continue"
 which xcodebuild > /dev/null 2>&1 || fail "Please install Xcode and xcode command line tools to continue"
