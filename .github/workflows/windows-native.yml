@@ -18,8 +18,10 @@ jobs:
         run: ./contrib/pull_locale
       - name: install dependencies
         run: apt-get install -qy wget gnupg2 dirmngr python3-software-properties software-properties-common libssl-dev
+        shell: bash
       - name: install dependencies
         run: apt-get install -qy git p7zip-full make mingw-w64 autotools-dev autoconf libtool gettext python3-scrypt
+        shell: bash
       - name: Run docker build
         run: ./contrib/build-wine/build.sh
         shell: bash
