@@ -18,6 +18,7 @@ jobs:
         run: ./contrib/pull_locale
       - name: Run docker build
         run: ./contrib/build-wine/build.sh
+        shell: bash
 
       - name: Set version env
         if: startsWith(github.ref, 'refs/tags/')
